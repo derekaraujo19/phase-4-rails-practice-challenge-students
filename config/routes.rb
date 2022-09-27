@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :students
-  resources :instructors
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  resources :instructors do
+    resources :students, only: [:create, :update]
+  end
+
+  resources :students, only: [:show, :index, :destroy]
 end
